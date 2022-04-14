@@ -264,3 +264,4 @@ document.onkeydown = function (e) {
 		game.bgm2.play();
 	}
 };
+
