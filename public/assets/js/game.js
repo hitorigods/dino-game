@@ -5,8 +5,8 @@ imageNames = ['bird', 'cactus', 'dino'];
 const game = {
 	counter: 0,
 	backGrounds: [],
-	bgm1: new Audio(`./_assets/audio/fieldSong.mp3`),
-	bgm2: new Audio(`./_assets/audio/jump.mp3`),
+	bgm1: new Audio(`./assets/audio/fieldSong.mp3`),
+	bgm2: new Audio(`./assets/audio/jump.mp3`),
 	enemys: [],
 	enemyCountdown: 0,
 	image: {},
@@ -19,7 +19,7 @@ game.bgm1.loop = true;
 
 let imageLoadCounter = 0;
 for (const imageName of imageNames) {
-	const imagePath = `./_assets/img/${imageName}.png`;
+	const imagePath = `./assets/img/${imageName}.png`;
 	game.image[imageName] = new Image();
 	game.image[imageName].src = imagePath;
 	game.image[imageName].onload = () => {
