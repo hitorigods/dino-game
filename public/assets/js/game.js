@@ -1,3 +1,16 @@
+const requestAnimationFrame =
+	window.requestAnimationFrame ||
+	window.mozRequestAnimationFrame ||
+	window.webkitRequestAnimationFrame ||
+	window.msRequestAnimationFrame;
+window.requestAnimationFrame = requestAnimationFrame;
+const cancelAnimationFrame =
+	window.cancelAnimationFrame ||
+	window.mozcancelAnimationFrame ||
+	window.webkitcancelAnimationFrame ||
+	window.mscancelAnimationFrame;
+window.cancelAnimationFrame = cancelAnimationFrame;
+
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 imageNames = ['bird', 'cactus', 'dino'];
@@ -60,10 +73,13 @@ function init() {
 function start() {
 	game.state = 'gaming';
 	game.bgm1.play();
-	game.timer = setInterval(ticker, 30);
+	//game.timer = setInterval(ticker, 30);
+	game.timer = window.requestAnimationFrame(ticker);
 }
 
 function ticker() {
+	game.timer = window.requestAnimationFrame(ticker);
+
 	// 画面クリア
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -246,8 +262,9 @@ function hitCheck() {
 			ctx.fillText('Game Over!', 100, 200);
 			ctx.font = 'bold 60px serif';
 			ctx.fillText(`Press Enter key`, 150, 300);
-			ctx.fillText(`to start.`, 300, 380);
-			clearInterval(game.timer);
+			ctx.fillText(`retry.`, 300, 380);
+			//clearInterval(game.timer);
+			window.cancelAnimationFrame(game.timer);
 		}
 	}
 }
