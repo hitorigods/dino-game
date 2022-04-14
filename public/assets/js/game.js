@@ -53,7 +53,7 @@ function init() {
 	game.state = 'init';
 
 	// 画面クリア
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	clearRect();
 
 	// 恐竜の表示
 	createDino();
@@ -64,10 +64,16 @@ function init() {
 	drawBackGrounds();
 
 	// 文章の表示
-	ctx.fillStyle = 'black';
+	ctx.fillStyle = 'white';
 	ctx.font = 'bold 60px serif';
 	ctx.fillText(`Press Enter key`, 60, 150);
 	ctx.fillText(`to start.`, 150, 230);
+}
+
+function clearRect() {
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	ctx.fillStyle = 'rgb( 0, 0, 0)';
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 function start() {
@@ -81,7 +87,7 @@ function ticker() {
 	game.timer = window.requestAnimationFrame(ticker);
 
 	// 画面クリア
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	clearRect();
 
 	// 背景の作成
 	if (game.counter % 10 === 0) {
@@ -240,9 +246,9 @@ function drawEnemys() {
 }
 
 function drawScore() {
-	ctx.fillStyle = 'black';
+	ctx.fillStyle = 'white';
 	ctx.font = '24px serif';
-	ctx.fillText(`score: ${game.score}`, 0, 30);
+	ctx.fillText(`score: ${game.score}`, 10, 30);
 }
 
 function hitCheck() {
@@ -257,7 +263,7 @@ function hitCheck() {
 			game.state = 'gameover';
 			game.bgm1.pause();
 
-			ctx.fillStyle = 'black';
+			ctx.fillStyle = 'white';
 			ctx.font = 'bold 100px serif';
 			ctx.fillText('Game Over!', 100, 200);
 			ctx.font = 'bold 60px serif';
