@@ -253,6 +253,7 @@ function hitCheck() {
 }
 
 document.onkeydown = function (e) {
+	console.log(e.key);
 	if (e.key === 'Enter' && game.state === 'init') {
 		start();
 	}
@@ -264,4 +265,3 @@ document.onkeydown = function (e) {
 		game.bgm2.play();
 	}
 };
-
