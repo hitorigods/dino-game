@@ -245,8 +245,8 @@ function hitCheck() {
 			ctx.font = 'bold 100px serif';
 			ctx.fillText('Game Over!', 100, 200);
 			ctx.font = 'bold 60px serif';
-			ctx.fillText(`Press Enter key`, 100, 300);
-			ctx.fillText(`to start.`, 250, 380);
+			ctx.fillText(`Press Enter key`, 150, 300);
+			ctx.fillText(`to start.`, 300, 380);
 			clearInterval(game.timer);
 		}
 	}
